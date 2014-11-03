@@ -60,9 +60,10 @@ public class MajorityElement {
         return -1;
     }
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("rosalind_maj.txt"));
-        FileWriter writer = new FileWriter(new File("output.txt"));
-        String inp[] = reader.readLine().split(" ");
+        try(BufferedReader reader = new BufferedReader(new FileReader("rosalind_maj.txt"));
+        FileWriter writer = new FileWriter(new File("output.txt")))
+        {
+            String inp[] = reader.readLine().split(" ");
         int k = Integer.parseInt(inp[0]);
         int n = Integer.parseInt(inp[1]);
         while(reader.ready())
@@ -73,10 +74,12 @@ public class MajorityElement {
             {
                 arr[i] = Integer.parseInt(Sarr[i]);
             }
-            //Arrays.sort(arr);
             writer.write(Integer.toString(SearchMajorityElement(arr, n)) + " ");
             writer.flush();
         }
-        writer.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
     }
 }
