@@ -19,22 +19,19 @@ import java.util.Arrays;
 
 public class MajorityElement {
 
-    /**
-     * @param args the command line arguments
-     */
-    static int SearchMajorityElement(int arr[], int N) {
+    static int searchMajorityElement(int arr[], int n) {
         int count = 0;
-        int Elem = 0;
-        for(int i = 0; i < N; i++)
+        int elem = 0;
+        for(int i = 0; i < n; i++)
         {
             if(count == 0)
             {
-                Elem = arr[i];
+                elem = arr[i];
                 count++;
             }
             else
             {
-                if(arr[i] == Elem)
+                if(arr[i] == elem)
                 {
                     count++;
                 }
@@ -43,17 +40,16 @@ public class MajorityElement {
                     count--;
                 }
             }
-            //System.out.println(count+ " " + Elem + " " + arr[i]);
         }
         int control = 0;
-        for(int i = 0; i < N; i++)
+        for(int i = 0; i < n; i++)
         {
-            if(arr[i] == Elem)
+            if(arr[i] == elem)
             {
                 control++;
-                if(control > N/2)
+                if(control > n/2)
                 {
-                    return Elem;
+                    return elem;
                 }
             }
         }
@@ -74,7 +70,7 @@ public class MajorityElement {
             {
                 arr[i] = Integer.parseInt(Sarr[i]);
             }
-            writer.write(Integer.toString(SearchMajorityElement(arr, n)) + " ");
+            writer.write(Integer.toString(searchMajorityElement(arr, n)) + " ");
             writer.flush();
         }
         }catch(IOException e){
